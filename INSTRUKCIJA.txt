@@ -1,0 +1,13 @@
+Į GitHub date-night pakeisk šiuos 3 failus:
+index.html
+style.css
+script.js
+
+images aplanko nekeisk.
+
+music.mp3 turi būti pagrindiniame date-night aplanke šalia index.html.
+Jei jo ten nėra, įkelk atskirai.
+
+Šioje versijoje mygtukas visose 9 skaidrėse yra fiksuotai 190x46 px.
+Tekstai palikti ant nuotraukų.
+Finalas: 19:00.

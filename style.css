@@ -1,0 +1,72 @@
+*{box-sizing:border-box}
+html,body{margin:0;background:#100a0d;color:#fff;font-family:Arial,sans-serif}
+body{min-height:100vh}
+#story{width:min(100%,540px);margin:0 auto;padding:10px 18px 24px;text-align:center}
+header .eyebrow{font-size:10px;font-weight:800;letter-spacing:4px;color:#e5a1b7;margin-bottom:8px}
+h1{font-family:Georgia,serif;font-size:31px;line-height:1.05;margin:0 0 8px}
+header p{font-size:14px;line-height:1.35;color:#e6d5dc;margin:0 0 12px}
+
+#card{
+ position:relative;
+ width:min(84vw,370px);
+ height:min(58vh,510px);
+ margin:0 auto;
+ border-radius:22px;
+ overflow:hidden;
+ border:1px solid #51313c;
+ background:#25171d
+}
+#photo{width:100%;height:100%;display:block;object-fit:cover}
+#card:after{
+ content:"";position:absolute;z-index:2;left:0;right:0;bottom:0;height:34%;
+ background:linear-gradient(transparent,rgba(0,0,0,.82));pointer-events:none
+}
+#scratch{position:absolute;z-index:5;inset:0;width:100%;height:100%;touch-action:none}
+.photoText{position:absolute;z-index:3;left:20px;right:20px;bottom:20px;text-align:left;pointer-events:none}
+#message{font-family:Georgia,serif;font-size:21px;line-height:1.15;font-weight:700;text-shadow:0 2px 10px #000}
+#counter{font-size:12px;margin-top:9px;color:#fff}
+
+#next{
+ display:inline-flex;
+ width:190px;
+ height:46px;
+ min-width:190px;
+ max-width:190px;
+ padding:0;
+ margin:12px auto 0;
+ align-items:center;
+ justify-content:center;
+ border:0;
+ border-radius:999px;
+ background:#f5f2f3;
+ color:#1b1115;
+ font:800 14px Arial,sans-serif;
+ white-space:nowrap;
+ appearance:none;
+ -webkit-appearance:none;
+}
+#next[hidden]{display:none!important}
+
+.final{padding:58px 12px;text-align:center}
+.final .heart{font-size:40px}
+.final h1{font-size:44px;margin-top:20px}
+.final .time{font-family:Georgia,serif;font-size:66px;font-weight:700;margin:12px 0 25px}
+.final p{font-size:17px;line-height:1.55}
+.final .sign{font-family:Georgia,serif;font-style:italic;margin-top:30px;opacity:.75}
+
+@media(max-width:600px){
+ #story{padding-top:7px}
+ h1{font-size:28px}
+ header p{margin-bottom:9px}
+ #card{width:min(82vw,350px);height:min(55vh,490px)}
+ #message{font-size:20px}
+ #next{width:190px;min-width:190px;max-width:190px;height:46px;margin-top:10px}
+}
+@media(max-height:760px) and (max-width:600px){
+ #card{width:min(76vw,325px);height:49vh}
+ h1{font-size:25px}
+ header p{font-size:13px;margin-bottom:7px}
+ #message{font-size:18px}
+ .photoText{bottom:16px}
+ #next{width:190px;min-width:190px;max-width:190px;height:46px;margin-top:8px}
+}
