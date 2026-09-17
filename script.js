@@ -1,9 +1,9 @@
 const slides=[
  ['images/01.jpeg','Kai kurios akimirkos tiesiog lieka atminty…'],
  ['images/02.jpeg','Man patinka matyti tave tokią — tiesiog savimi. ❤️'],
- ['images/03.jpeg','Tavo šypsena visada pagerina mano dieną.'],
+ ['images/03.jpeg','Tavo šypsena visada praskaidrina mano dieną.'],
  ['images/04.jpeg','Su tavimi net paprastos vietos tampa ypatingos.'],
- ['images/05.jpeg','Už mūsų mažus „į sveikatą“ ir didelius prisiminimus. 🥂'],
+ ['images/05.jpeg','Už mūsų didelius prisiminimus. 🥂'],
  ['images/06.jpeg','Už vakarus, kurių nesinori baigti…'],
  ['images/07.jpeg','Ir už tas akimirkas, kai pasaulis aplink tiesiog dingsta. ❤️'],
  ['images/08.jpeg','Už mus tokius, kokie esam — be filtrų ir rimtumo. 😘'],
