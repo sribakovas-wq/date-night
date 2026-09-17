@@ -1,0 +1,74 @@
+const slides=[
+['images/01.jpeg','Kai kurios akimirkos tiesiog lieka atminty…'],
+['images/02.jpeg','Man patinka matyti tave tokią – tiesiog savimi. ❤️'],
+['images/03.jpeg','Tavo šypsena visada praskaidrina mano dieną.'],
+['images/04.jpeg','Su tavimi net paprastos vietos tampa ypatingos.'],
+['images/05.jpeg','Už mūsų didelius prisiminimus. 🥂'],
+['images/06.jpeg','Už vakarus, kurių nesinori baigti…'],
+['images/07.jpeg','Ir už tas akimirkas, kai pasaulis aplink tiesiog dingsta. ❤️'],
+['images/08.jpeg','Už mus tokius, kokie esam – be filtrų ir ritmo. 😘'],
+['images/09.jpeg','Labiausiai laukiu ne vietos. Laukiu dar vieno mūsų vakaro kartu.']
+];
+
+let i=0,drawing=false,revealed=false,moves=0;
+const card=document.getElementById('card'),img=document.getElementById('photo'),
+msg=document.getElementById('message'),counter=document.getElementById('counter'),
+canvas=document.getElementById('scratch'),ctx=canvas.getContext('2d',{willReadFrequently:true}),
+next=document.getElementById('next'),music=document.getElementById('music');
+
+function playMusic(){if(music){music.volume=.65;music.play().catch(()=>{});}}
+
+function setup(){
+ drawing=false;revealed=false;moves=0;
+ img.src=slides[i][0];msg.textContent=slides[i][1];
+ counter.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+ next.hidden=true;next.disabled=false;
+ canvas.style.transition='none';canvas.style.opacity='1';canvas.style.pointerEvents='auto';
+ requestAnimationFrame(paintCover);
+}
+function paintCover(){
+ const r=card.getBoundingClientRect();
+ canvas.width=Math.max(1,Math.round(r.width));canvas.height=Math.max(1,Math.round(r.height));
+ ctx.globalCompositeOperation='source-over';
+ const g=ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+ g.addColorStop(0,'#efa1b8');g.addColorStop(.5,'#ce6888');g.addColorStop(1,'#87384f');
+ ctx.fillStyle=g;ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle='#fff';ctx.font='600 17px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
+ ctx.fillText('Brauk pirštu ❤️',canvas.width/2,canvas.height/2);
+ ctx.globalCompositeOperation='destination-out';
+}
+function scratch(e){
+ if(!drawing||revealed)return;e.preventDefault();
+ const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+ ctx.beginPath();ctx.arc(x,y,Math.max(22,canvas.width*.06),0,Math.PI*2);ctx.fill();
+ if(++moves%8===0)check();
+}
+function check(){
+ const d=ctx.getImageData(0,0,canvas.width,canvas.height).data;let clear=0,total=0;
+ for(let p=3;p<d.length;p+=100){total++;if(d[p]<40)clear++;}
+ if(clear/total>=.55)reveal();
+}
+function reveal(){
+ if(revealed)return;revealed=true;canvas.style.transition='opacity .35s ease';canvas.style.opacity='0';
+ setTimeout(()=>{canvas.style.pointerEvents='none';next.hidden=false;},200);
+}
+canvas.addEventListener('pointerdown',e=>{playMusic();drawing=true;try{canvas.setPointerCapture(e.pointerId)}catch(_){}scratch(e);});
+canvas.addEventListener('pointermove',scratch);
+canvas.addEventListener('pointerup',()=>{drawing=false;check();});
+canvas.addEventListener('pointercancel',()=>{drawing=false;});
+
+/* Vienas prisilietimas = iškart kita nuotrauka */
+function nextSlide(e){
+ e.preventDefault();e.stopPropagation();playMusic();
+ if(i<slides.length-1){i++;setup();}
+ else{
+  document.getElementById('story').innerHTML=`<section class="final">
+  <div class="heart">❤️</div><div class="eyebrow">DABAR BELIKO VIENA…</div>
+  <h1>Antradienis</h1><div class="time">19:00</div>
+  <p>Brangioji, būsiu pasiruošęs.<br><br>Šįkart planas tavo,<br>o aš su malonumu leisiuosi nustebinamas. ❤️</p>
+  <div class="sign">Iki mūsų vakaro…</div></section>`;
+ }
+}
+next.addEventListener('pointerdown',nextSlide);
+window.addEventListener('resize',()=>{if(!revealed)paintCover();});
+setup();
