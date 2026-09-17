@@ -6,7 +6,7 @@ const slides=[
 ['images/05.jpeg','Už mūsų didelius prisiminimus. 🥂'],
 ['images/06.jpeg','Už vakarus, kurių nesinori baigti…'],
 ['images/07.jpeg','Ir už tas akimirkas, kai pasaulis aplink tiesiog dingsta. ❤️'],
-['images/08.jpeg','Už mus tokius, kokie esam – be filtrų ir ritmo. 😘'],
+['images/08.jpeg','Už mus tokius, kokie esam – be filtrų ir rimtumo. 😘'],
 ['images/09.jpeg','Labiausiai laukiu ne vietos. Laukiu dar vieno mūsų vakaro kartu.']
 ];
 
